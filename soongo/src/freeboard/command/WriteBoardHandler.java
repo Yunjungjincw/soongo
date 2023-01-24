@@ -33,7 +33,7 @@ public class WriteBoardHandler implements CommandHandler {
 	
 	private String processForm(HttpServletRequest request, HttpServletResponse response) {
 		
-		return "/view/freeBoard/freeBoardWrite.jsp";
+		return "/view/freeboard/freeBoardWrite.jsp";
 	}
 
 	
@@ -49,7 +49,7 @@ public class WriteBoardHandler implements CommandHandler {
 		
 		
 		
-		return "/view/";
+		return "/view/freeboard/freeBoardWriteSuccess.jsp";
 	}
 
 

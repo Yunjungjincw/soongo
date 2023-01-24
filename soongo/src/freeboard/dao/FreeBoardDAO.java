@@ -125,7 +125,7 @@ public class FreeBoardDAO {
 	}
 	
 	//write 성공하고 보여줄 페이지
-	public List<FreeBoardList> SuccessPage(String no) {
+	/*public List<FreeBoardList> SuccessPage(String no) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
@@ -164,6 +164,71 @@ public class FreeBoardDAO {
 		}
 		System.out.println("doa3"+freeBoardList);
 		return freeBoardList;
+	}*/
+	
+	
+	
+	//글 수정하기
+	public int updateBoard(String no, String title, String content) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		int result = -1;
+		
+		String sql="UPDATE FREEBOARD" + 
+				" SET free_title=?,free_content=?" + 
+				" WHERE free_no=?";
+		
+
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, title);
+			stmt.setString(2, content);
+			stmt.setString(3, no);
+			result = stmt.executeUpdate();
+			
+			System.out.println("dao-updateBoard 진입");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(stmt);
+			JdbcUtil.close(rs);
+		}
+	
+		return result;
 	}
 	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

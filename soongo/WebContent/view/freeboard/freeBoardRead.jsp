@@ -19,9 +19,9 @@
 			<p>내용: ${board.free_content}</p>
 			<p>작성일 : ${board.free_createdate}</p>
 			<p>수정일 : ${board.free_updatedate}</p>
+<a href="<%=request.getContextPath()%>/freeboard/update.do?no=${board.free_no}"><button>글 수정하기</button></a>
+<a href="<%=request.getContextPath()%>"><button>글 삭제하기</button></a>
 	</c:forEach>
 	
-<%-- <a href="<%=request.getContextPath()%>"><button>글 수정하기</button></a>
-<a href="<%=request.getContextPath()%>"><button>글 삭제하기</button></a> --%>
 </body>
 </html>
