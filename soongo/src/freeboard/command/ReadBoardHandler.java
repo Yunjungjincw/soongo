@@ -11,6 +11,9 @@ public class ReadBoardHandler implements CommandHandler {
 
 	ReadBoardService readBoardService = new ReadBoardService();
 	
+	private static final String FORM_VIEW="/view/freeboard/freeBoardRead.jsp";
+	
+	
 	@Override
 	public String process(HttpServletRequest request,
 					HttpServletResponse response) throws Exception {
@@ -24,8 +27,9 @@ public class ReadBoardHandler implements CommandHandler {
 		
 		 FreeBoard freeBoard 
 		 	= readBoardService.getBoardDetail(no);
+		 System.out.println("freeBoard ="+freeBoard);
 		 request.setAttribute("freeBoard", freeBoard);
 		
-		return "/view/freeBoard/freeBoardRead.jsp";
+		return FORM_VIEW;
 	}
 }

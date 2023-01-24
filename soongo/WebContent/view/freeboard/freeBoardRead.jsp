@@ -6,11 +6,12 @@
 <html lang="">
 <head>
 <meta charset="UTF-8">
-<title>게시판 목록</title>
+<title>게시글 상세보기</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <h2><a href="<%=request.getContextPath()%>/index.jsp">HOME</a></h2>
 <body>
+
 
 <c:forEach var="board" items="${freeBoard.list}">
 			<p>글번호 : ${board.free_no}</p>
