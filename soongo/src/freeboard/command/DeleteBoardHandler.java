@@ -4,16 +4,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import freeboard.model.FreeBoard;
+import freeboard.service.DeleteBoardService;
 import freeboard.service.ListBoardService;
 import freeboard.service.ReadBoardService;
 import freeboard.service.UpdateBoardService;
 import mvc.command.CommandHandler;
 
-public class UpdateBoardHandler implements CommandHandler {
+public class DeleteBoardHandler implements CommandHandler {
 
 	UpdateBoardService updateBoardService = new UpdateBoardService();
-	ListBoardService listBoardService = new ListBoardService();
 	ReadBoardService readBoardService = new ReadBoardService();
+	DeleteBoardService deleteBoardService = new DeleteBoardService();
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -39,7 +40,7 @@ public class UpdateBoardHandler implements CommandHandler {
 		request.setAttribute("freeBoard", freeBoard);
 		
 		
-		return "/view/freeboard/freeBoardUpdate.jsp";
+		return "/view/freeboard/freeBoardDelete.jsp";
 	}
 
 
@@ -47,19 +48,17 @@ public class UpdateBoardHandler implements CommandHandler {
 	private String processSubmit(HttpServletRequest request, HttpServletResponse response) {
 		String no = request.getParameter("no");
 		System.out.println("no2222="+no);
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
 		
 		
 	
-		int updateresult = updateBoardService.update(no, title, content);
+		int deleteresult = deleteBoardService.delete(no);
 		
 		
 		//insert 되었다는 변수
-		request.setAttribute("result",updateresult);
+		request.setAttribute("deleteresult",deleteresult);
 		
 		
 		
-		return "/view/freeboard/freeBoardList.jsp";
+		return "/view/freeboard/freeBoardDeleteSuccess.jsp";
 	}
 }

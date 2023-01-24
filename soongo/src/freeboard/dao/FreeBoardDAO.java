@@ -199,6 +199,32 @@ public class FreeBoardDAO {
 	}
 	
 	
+	//글 삭제하기
+	public int deleteBoard(String no) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		int result = -1;
+		
+		String sql="DELETE FROM FREEBOARD" + 
+				" WHERE free_no=?";
+		
+
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, no);
+			result = stmt.executeUpdate();
+			
+			System.out.println("dao-delete 성공");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(stmt);
+			JdbcUtil.close(rs);
+		}
+	
+		return result;
+	}
 	
 }
 
