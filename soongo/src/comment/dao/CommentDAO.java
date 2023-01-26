@@ -57,7 +57,7 @@ public class CommentDAO {
 		PreparedStatement stmt = null;
 		
 		String sql="INSERT INTO FREE_COMMENT (comm_content,comm_credate,user_name,isshow,comm_volt,free_no)" + 
-				" VALUES (?,'2023-01-19 00:00:00','이름15','Y',0,?)";
+				" VALUES (?,now(),'이름15','Y',0,?)";
 		
 		int cnt = 0;
 		

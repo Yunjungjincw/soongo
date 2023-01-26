@@ -10,6 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <h2><a href="<%=request.getContextPath()%>/index.jsp">HOME</a></h2>
+<a href="<%=request.getContextPath()%>/freeboard/list.do">글 목록으로</a>
 <body>
 
 
@@ -41,10 +42,8 @@
 
 <c:forEach var="comment" items="${comment.commentList}">
 	<tr>
-
 		<td>${comment.user_name}</td>
 		<td>${comment.comm_content}</td>
-		<td><button type="submit" name="update" id="update">수정</button></td>
 		<td><button type="submit" name="delete" id="delete">삭제</button></td>
 	</tr>
 </c:forEach>

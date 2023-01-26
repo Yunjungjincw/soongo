@@ -35,6 +35,16 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
 			<td><textarea name="content" id="content" ></textarea></td>
 	</tr>
 	<tr>
+		<th>카테고리</th>
+		<td>
+		   	<select name='free_category'>
+			    <option value='' selected>-- 선택 --</option>
+			    <option value='자유'>자유</option>
+			    <option value='질문'>질문</option>
+			    <option value='TIP'>TIP</option>
+  			</select>
+		</td>
+	<tr>
 		<td colspan="2" style="text-align:center;"><input type="submit" value="수정하기"/></td>
 	</tr>
 	</table>

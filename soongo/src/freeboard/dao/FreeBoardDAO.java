@@ -169,13 +169,13 @@ public class FreeBoardDAO {
 	
 	
 	//글 수정하기
-	public int updateBoard(String no, String title, String content) {
+	public int updateBoard(String no, String title, String content, String free_category) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		int result = -1;
 		
 		String sql="UPDATE FREEBOARD" + 
-				" SET free_title=?,free_content=?" + 
+				" SET free_title=?,free_content=?,free_category=?" + 
 				" WHERE free_no=?";
 		
 
@@ -184,7 +184,8 @@ public class FreeBoardDAO {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, title);
 			stmt.setString(2, content);
-			stmt.setString(3, no);
+			stmt.setString(3, free_category);
+			stmt.setString(4, no);
 			result = stmt.executeUpdate();
 			
 			System.out.println("dao-updateBoard 진입");
@@ -226,9 +227,36 @@ public class FreeBoardDAO {
 		return result;
 	}
 	
+	// 조회수 증가
+	public int updateCnt(String no) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		int result = -1;
+		
+		String sql="update FREEBOARD" + 
+				" SET free_readcnt=free_readcnt+1" + 
+				" WHERE free_no=?";
+		
+
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, no);
+			result = stmt.executeUpdate();
+			
+			System.out.println("dao-updateCnt 진입");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(stmt);
+			JdbcUtil.close(rs);
+		}
+	
+		return result;
+	}
+	
+	
 }
-
-
 
 
 

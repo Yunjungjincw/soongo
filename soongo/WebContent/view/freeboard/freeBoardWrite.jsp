@@ -30,8 +30,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
 			<td><textarea name="content" id="content" ></textarea></td>
 	</tr>
 	<tr>
-	
-	</tr>
+	<tr>
 		<th>카테고리</th>
 		<td>
 		   	<select name='free_category'>

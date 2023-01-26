@@ -15,6 +15,5 @@ $(document).ready(function(){
 <body>
 <h2>메인 페이지</h2>
 <a href="<%=request.getContextPath()%>/freeboard/list.do">자유게시판으로 이동</a>
-<a href="http://localhost/soongo/view/freeboard/freeBoardList.jsp">자유게시판으로 이동</a>
 </body>
 </html>

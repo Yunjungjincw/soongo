@@ -32,7 +32,7 @@ public class ReadBoardHandler implements CommandHandler {
 		
 		 
 		 
-		 // 댓글 상세 보기 코드
+		 // 댓글 - 목록 코드
 		 Comment comment = listCommentService.getCommentList(no);
 		 System.out.println("comment="+comment);
 		 request.setAttribute("comment",comment);
@@ -43,6 +43,10 @@ public class ReadBoardHandler implements CommandHandler {
 		 String content = request.getParameter("content");
 		 int commentResult = writeCommentService.writeComment(content, no);
 		 request.setAttribute("commentResult", commentResult);
+		 
+		 
+		 //조회수 증가
+
 		return FORM_VIEW;
 			
 	}

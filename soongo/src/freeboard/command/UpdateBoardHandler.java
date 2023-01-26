@@ -51,13 +51,14 @@ public class UpdateBoardHandler implements CommandHandler {
 	private String processSubmit(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 		request.setCharacterEncoding("UTF-8");
 		String no = request.getParameter("no");
-		System.out.println("no2222="+no);
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		
-		
-	
-		int updateresult = updateBoardService.update(no, title, content);
+		String free_category = request.getParameter("free_category");
+		System.out.println("no2222="+no);
+		System.out.println("title="+title);
+		System.out.println("content="+content);
+		System.out.println("free_category="+free_category);
+		int updateresult = updateBoardService.update(no, title, content, free_category);
 		
 		
 		//insert 되었다는 변수
@@ -65,6 +66,6 @@ public class UpdateBoardHandler implements CommandHandler {
 		
 		
 		
-		return "/view/freeboard/freeBoardList.jsp";
+		return "/freeboard/read.do?no="+no;
 	}
 }

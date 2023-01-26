@@ -57,9 +57,6 @@ public class CommentDeleteHandler implements CommandHandler {
 		//insert 되었다는 변수
 		request.setAttribute("cnt",cnt);
 		
-		
-		
-
 		response.sendRedirect("read.do?no=" + free_no);
 	}
 }

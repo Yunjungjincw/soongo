@@ -51,7 +51,7 @@ public class CommentWriteHandler implements CommandHandler {
 		String comm_content = request.getParameter("comm_content");
 	
 		
-		int cnt = writeBoardService.writeComment(free_no, comm_content);
+		int cnt = writeCommentService.writeComment(free_no, comm_content);
 		
 		//insert 되었다는 변수
 		request.setAttribute("cnt",cnt);
