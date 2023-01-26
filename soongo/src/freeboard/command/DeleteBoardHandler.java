@@ -35,7 +35,8 @@ public class DeleteBoardHandler implements CommandHandler {
 	
 	private String processForm(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 		request.setCharacterEncoding("UTF-8");
-		String no = request.getParameter("no");
+		String noVal = request.getParameter("no");
+		int no = Integer.parseInt(noVal);
 		
 		FreeBoard freeBoard 
 	 	= readBoardService.getBoardDetail(no);

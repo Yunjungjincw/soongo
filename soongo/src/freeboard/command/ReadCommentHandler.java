@@ -10,13 +10,13 @@ import freeboard.model.FreeBoard;
 import freeboard.service.ReadBoardService;
 import mvc.command.CommandHandler;
 
-public class ReadBoardHandler implements CommandHandler {
+public class ReadCommentHandler implements CommandHandler {
 
 	ReadBoardService readBoardService = new ReadBoardService();
 	ListCommentService listCommentService = new ListCommentService();
 	WriteCommentService writeCommentService = new WriteCommentService();
 	
-	private static final String FORM_VIEW="/view/freeboard/freeBoardRead.jsp";
+	private static final String FORM_VIEW="/view/freeboard/freeCommentRead.jsp";
 	
 	
 	@Override
@@ -41,7 +41,7 @@ public class ReadBoardHandler implements CommandHandler {
 		 //댓글 입력
 		 System.out.println("코멘트no"+no);
 		 String content = request.getParameter("content");
-		 int commentResult = writeCommentService.writeComment(no, content);
+		 int commentResult = writeCommentService.writeComment(no,content);
 		 request.setAttribute("commentResult", commentResult);
 		 
 		 

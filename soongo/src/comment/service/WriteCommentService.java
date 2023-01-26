@@ -11,7 +11,7 @@ public class WriteCommentService {
 	
 	
 	
-	public int writeComment(String free_no, String comm_content) {
+	public int writeComment(int free_no, String comm_content) {
 		int cnt = commentDAO.insertComment(free_no, comm_content);
 		return cnt;
 	}

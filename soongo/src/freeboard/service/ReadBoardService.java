@@ -13,7 +13,7 @@ public class ReadBoardService {
 	private FreeBoardDAO freeBoardDAO = new FreeBoardDAO();
 	CommentDAO commantDAO = new CommentDAO();
 	
-	public FreeBoard getBoardDetail(String no) {
+	public FreeBoard getBoardDetail(int no) {
 		System.out.println("서비스 진입");
 	
 		

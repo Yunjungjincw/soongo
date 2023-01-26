@@ -6,24 +6,33 @@ import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import comment.model.Comment;
+import comment.model.CommentList;
+import comment.service.DeleteCommentService;
+import comment.service.ListCommentService;
+import comment.service.UpdateCommentService;
 import comment.service.WriteCommentService;
+import freeboard.command.ReadBoardHandler;
+import freeboard.model.FreeBoard;
+import freeboard.service.ReadBoardService;
 import freeboard.service.WriteBoardService;
 import mvc.command.CommandHandler;
 
-public class CommentWriteHandler implements CommandHandler {
-	
-	WriteBoardService writeBoardService = new WriteBoardService();
-	WriteCommentService writeCommentService = new WriteCommentService();
+public class CommentUpdateHandler implements CommandHandler {
 	
 	
+	
+	ReadBoardService readBoardService = new ReadBoardService();
+	ListCommentService listCommentService = new ListCommentService();
+	UpdateCommentService updateCommentService = new UpdateCommentService();
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+
 		if (request.getMethod().equalsIgnoreCase("GET")) {
 			return processForm(request, response);// 수정폼보여줘
 		} else if (request.getMethod().equalsIgnoreCase("POST")) {
-			processSubmit(request, response);// 수정처리요청
+			processSubmit(request, response);
 			return null;
 		} else {
 			/*
@@ -39,28 +48,39 @@ public class CommentWriteHandler implements CommandHandler {
 		}
 	}
 	
-	private String processForm(HttpServletRequest request, HttpServletResponse response) {
+		private String processForm(HttpServletRequest request, HttpServletResponse response) {
+			System.out.println("CommentUpdateHandler 진입");
+			String noVal = request.getParameter("free_no");
+			int no = Integer.parseInt(noVal);
+		 FreeBoard freeBoard = readBoardService.getBoardDetail(no);
+		 request.setAttribute("freeBoard", freeBoard);
 		
-		return "/view/freeboard/freeBoardRead.jsp";
+		
+		 
+		 
+		 // 댓글 - 목록 코드
+		 String commnoVal = request.getParameter("comm_no");
+			int commno = Integer.parseInt(commnoVal);
+		 CommentList commentList = listCommentService.getCommentList(commno);
+		 request.setAttribute("commentList",commentList);
+		 
+		return "/view/freeboard/freeCommentRead.jsp";
 	}
-
+	
 	
 	private void processSubmit(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("UTF-8");
 		String free_noVal = request.getParameter("free_no");
 		int free_no = Integer.parseInt(free_noVal);
-		String comm_content = request.getParameter("comm_content");
-	
+		String content = request.getParameter("comm_content");
+		String commnoVal = request.getParameter("comm_no");
+		int commno = Integer.parseInt(commnoVal);
 		
-		int cnt = writeCommentService.writeComment(free_no, comm_content);
+		int cnt = updateCommentService.updateComment(commno,content);
 		
 		//insert 되었다는 변수
 		request.setAttribute("cnt",cnt);
 		
-		
-		
-//		return "redirect:" + FORM_VIEW+"?no=" + free_no;
-//		response.sendRedirect( FORM_VIEW +"?no=" + free_no );
 		response.sendRedirect("read.do?no=" + free_no);
 	}
 }

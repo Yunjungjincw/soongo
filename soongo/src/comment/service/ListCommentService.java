@@ -11,12 +11,24 @@ public class ListCommentService {
 	private CommentDAO commentDAO = new CommentDAO();
 	
 	
-	public Comment getCommentList(String no) {
+	public CommentList getCommentList(int no) {
 		
-		List<CommentList> list 
-			= commentDAO.selectAllComment(no);
-		
+		CommentList commentList 
+			= commentDAO.selectComment(no);
+		System.out.println("commentList gggg "+commentList);
 
-		return new Comment(list);
+		return commentList;
 	}
+	public Comment getCommentAll(int no) {
+		
+		
+		List<CommentList> commentList
+			= commentDAO.selectAllComment(no);
+		Comment comment = new Comment(commentList);
+
+		return comment;
+	}
+	
+	
+	
 }

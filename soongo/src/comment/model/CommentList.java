@@ -18,7 +18,6 @@ public class CommentList {
 	
 	public CommentList(int comm_no, String comm_content, Date comm_credate, String user_name, String isshow,
 			int comm_volt, int free_no) {
-		super();
 		this.comm_no = comm_no;
 		this.comm_content = comm_content;
 		this.comm_credate = comm_credate;

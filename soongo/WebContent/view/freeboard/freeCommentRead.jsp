@@ -28,38 +28,27 @@
 
 <hr>
 <hr>
+<%-- <c:forEach var="item" items="${commentList }">
+<form name="delete_update" id="delete_update" method="post" action="<%=request.getContextPath()%>/freeboard/commentupdate.do">
+<% <input type="text" name="comm_no" value="${item.comm_no}" hidden/> 
+<input type="text" name="free_no" value="${freeBoard.list[0].free_no}" hidden/>
+<!-- </form> -->
+</c:forEach> --%>
 
-<h3>댓글</h3> 댓글 작성 성공:<c:out value="${commentResult}"></c:out>
-<table border="1">
-	<tr>
-		<th>작성자</th>
-		<th>내용</th>
-		<th>등록일</th>
-	</tr>
-<c:forEach var="comment" items="${comment.commentList}">
-	<tr>
-		<td>${comment.user_name}</td>
-		<td>${comment.comm_content}</td>
-		<td>${comment.comm_credate}</td>
-		<td><a href="<%=request.getContextPath()%>/freeboard/commentdelete.do?free_no=${freeBoard.list[0].free_no}&comm_no=${comment.comm_no}">삭제</a></td>
-		<td><a href="<%=request.getContextPath()%>/freeboard/commentupdate.do?free_no=${freeBoard.list[0].free_no}&comm_no=${comment.comm_no}">수정</a></td>
-	</tr>
-</c:forEach>
-</table>
-<hr>
-<%-- <c:forEach var="write" items="${comment.commentList}"> --%>
+<%-- <h3>댓글</h3> 댓글 작성 성공:<c:out value="${commentResult}"></c:out> --%>
 <form name="write" id="write" method="post"
-		action="<%=request.getContextPath()%>/freeboard/commentwrite.do">
+		action="<%=request.getContextPath()%>/freeboard/commentupdate.do?free_no=${freeBoard.list[0].free_no}&comm_no=${commentList.comm_no}">
 		
-		<input type="text" name="free_no" value="${freeBoard.list[0].free_no}" hidden/>
-
+		<%-- <input type="text" name="free_no" value="${freeBoard.list[0].free_no}" hidden/> --%>
+		${commentList.comm_no}
+	
 	<table border="1">
 	<tr>
 		<th>댓글 내용</th>
-			<td><textarea name="comm_content" id="comm_content" ></textarea></td>
+			<td><textarea name="comm_content" id="comm_content" >${commentList.comm_content}</textarea></td>
 	</tr>
 	<tr>
-		<td colspan="2" style="text-align:center;"><input type="submit" value="댓글 입력"/></td>
+		<td colspan="2" style="text-align:center;"><input type="submit" value="수정할 내용"/></td>
 	</tr>
 	</table>
 </form>
