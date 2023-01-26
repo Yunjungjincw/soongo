@@ -1,18 +1,16 @@
-package freeboard.command;
+package comment.command;
 
 import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import comment.service.WriteCommentService;
 import freeboard.service.WriteBoardService;
 import mvc.command.CommandHandler;
 
 public class WriteBoardHandler implements CommandHandler {
 	
 	WriteBoardService writeBoardService = new WriteBoardService();
-	WriteCommentService writeCommentService = new WriteCommentService();
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {

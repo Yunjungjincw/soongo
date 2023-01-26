@@ -51,7 +51,6 @@ public class FreeBoardDAO {
 			JdbcUtil.close(stmt);
 			JdbcUtil.close(rs);
 		}
-		System.out.println("doa3"+freeBoardList);
 		return freeBoardList;
 	}
 	
@@ -101,11 +100,11 @@ public class FreeBoardDAO {
 	
 	
 	// 글 쓰기
-	public int insertBoard(String title, String content) {
+	public int insertBoard(String title, String content, String free_category) {
 		PreparedStatement stmt = null;
 		
 		String sql="INSERT INTO FREEBOARD (free_title,free_content,free_credate,free_update,free_readcnt,user_name,isshow,free_category,user_no)" + 
-				" VALUES (?,?,now(),now(),0,'이름11','Y','자유',11)";
+				" VALUES (?,?,now(),now(),0,'이름11','Y',?,11)";
 		
 		int cnt = 0;
 		
@@ -115,6 +114,7 @@ public class FreeBoardDAO {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, title);
 			stmt.setString(2, content);
+			stmt.setString(3, free_category);
 			cnt = stmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();

@@ -1,5 +1,6 @@
-package freeboard.command;
+package comment.command;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,10 +10,12 @@ import comment.service.WriteCommentService;
 import freeboard.service.WriteBoardService;
 import mvc.command.CommandHandler;
 
-public class WriteBoardHandler implements CommandHandler {
+public class CommentDeleteHandler implements CommandHandler {
 	
 	WriteBoardService writeBoardService = new WriteBoardService();
 	WriteCommentService writeCommentService = new WriteCommentService();
+	
+	
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -20,7 +23,8 @@ public class WriteBoardHandler implements CommandHandler {
 		if (request.getMethod().equalsIgnoreCase("GET")) {
 			return processForm(request, response);// 수정폼보여줘
 		} else if (request.getMethod().equalsIgnoreCase("POST")) {
-			return processSubmit(request, response);// 수정처리요청
+			processSubmit(request, response);// 수정처리요청
+			return null;
 		} else {
 			/*
 			 * 참고. 상태코드 => SC_OK 200(성공): 서버가 요청을 제대로 처리했다는 뜻이다. 이는 주로 서버가 요청한 페이지를 제공했다는
@@ -41,22 +45,21 @@ public class WriteBoardHandler implements CommandHandler {
 	}
 
 	
-	private String processSubmit(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+	private void processSubmit(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("UTF-8");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		String free_category = request.getParameter("free_category");
-		System.out.println("free_category="+free_category);
+		String free_no = request.getParameter("free_no");
+		String comm_content = request.getParameter("comm_content");
+	
 		
-		int cnt = writeBoardService.writetBoard(title, content, free_category);
+		int cnt = writeBoardService.writeComment(free_no, comm_content);
 		
 		//insert 되었다는 변수
 		request.setAttribute("cnt",cnt);
 		
 		
 		
-		return "/view/freeboard/freeBoardWriteSuccess.jsp";
+//		return "redirect:" + FORM_VIEW+"?no=" + free_no;
+//		response.sendRedirect( FORM_VIEW +"?no=" + free_no );
+		response.sendRedirect("read.do?no=" + free_no);
 	}
-
-
 }
