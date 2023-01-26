@@ -27,7 +27,11 @@
 
 <hr>
 <hr>
-<form name="delete" id="delete" method="post" action="">
+<form name="delete_update" id="delete_update" method="post" action="<%=request.getContextPath()%>/freeboard/commentdelete.do">
+<input type="text" name="comm_no" value="${comment.commentList[0].comm_no}" hidden/>
+<input type="text" name="free_no" value="${freeBoard.list[0].free_no}" hidden/>
+
+
 <h3>댓글</h3> 댓글 작성 성공:<c:out value="${commentResult}"></c:out>
 <table border="1">
 	<tr>
@@ -37,10 +41,11 @@
 
 <c:forEach var="comment" items="${comment.commentList}">
 	<tr>
+
 		<td>${comment.user_name}</td>
 		<td>${comment.comm_content}</td>
-		<td><input type="submit" value=""/></td>
-		<td></td>
+		<td><button type="submit" name="update" id="update">수정</button></td>
+		<td><button type="submit" name="delete" id="delete">삭제</button></td>
 	</tr>
 </c:forEach>
 </table>

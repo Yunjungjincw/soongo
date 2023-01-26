@@ -1,5 +1,7 @@
 package freeboard.command;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,7 +33,8 @@ public class DeleteBoardHandler implements CommandHandler {
 		return null;
 	}
 	
-	private String processForm(HttpServletRequest request, HttpServletResponse response) {
+	private String processForm(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("UTF-8");
 		String no = request.getParameter("no");
 		
 		FreeBoard freeBoard 

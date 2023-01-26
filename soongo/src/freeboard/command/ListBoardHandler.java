@@ -18,6 +18,7 @@ public class ListBoardHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, 
 						HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("UTF-8");
 		System.out.println("ListBoardHandler 진입");
 		
 		 FreeBoard freeBoard = listWriteService.getBoardListAll();

@@ -41,7 +41,7 @@ public class CommentWriteHandler implements CommandHandler {
 	
 	private String processForm(HttpServletRequest request, HttpServletResponse response) {
 		
-		return "/view/freeboard/freeBoardWrite.jsp";
+		return "/view/freeboard/freeBoardRead.jsp";
 	}
 
 	

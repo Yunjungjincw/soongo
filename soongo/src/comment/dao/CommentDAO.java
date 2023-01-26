@@ -106,25 +106,26 @@ public class CommentDAO {
 	
 		return result;
 	}
-	
+	*/
 	
 	//글 삭제하기
-	public int deleteBoard(String no) {
+	public int deleteComment(String comm_no) {
+		System.out.println("dao-comment delete 진입");
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		int result = -1;
 		
-		String sql="DELETE FROM FREEBOARD" + 
-				" WHERE free_no=?";
+		String sql="Delete from free_comment" + 
+				" where comm_no=?";
 		
-
+		
 		try {
 			Connection conn = ConnectionProvider.getConnection();
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, no);
+			stmt.setString(1, comm_no);
 			result = stmt.executeUpdate();
 			
-			System.out.println("dao-delete 성공");
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -134,9 +135,6 @@ public class CommentDAO {
 	
 		return result;
 	} 
-	
-	*/
-	
 }
 
 

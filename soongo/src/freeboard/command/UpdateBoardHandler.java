@@ -1,5 +1,7 @@
 package freeboard.command;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,6 +19,7 @@ public class UpdateBoardHandler implements CommandHandler {
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("UTF-8");
 		
 		if(request.getMethod().equalsIgnoreCase("GET")) {
 			return processForm(request,response);
@@ -30,7 +33,8 @@ public class UpdateBoardHandler implements CommandHandler {
 		return null;
 	}
 	
-	private String processForm(HttpServletRequest request, HttpServletResponse response) {
+	private String processForm(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("UTF-8");
 		String no = request.getParameter("no");
 		
 		FreeBoard freeBoard 
@@ -44,7 +48,8 @@ public class UpdateBoardHandler implements CommandHandler {
 
 
 	
-	private String processSubmit(HttpServletRequest request, HttpServletResponse response) {
+	private String processSubmit(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("UTF-8");
 		String no = request.getParameter("no");
 		System.out.println("no2222="+no);
 		String title = request.getParameter("title");
