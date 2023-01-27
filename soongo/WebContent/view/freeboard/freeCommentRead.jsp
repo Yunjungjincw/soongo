@@ -48,7 +48,7 @@
 			<td><textarea name="comm_content" id="comm_content" >${commentList.comm_content}</textarea></td>
 	</tr>
 	<tr>
-		<td colspan="2" style="text-align:center;"><input type="submit" value="수정할 내용"/></td>
+		<td colspan="2" style="text-align:center;"><input type="submit" value="수정 하기"/></td>
 	</tr>
 	</table>
 </form>

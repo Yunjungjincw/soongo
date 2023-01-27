@@ -46,10 +46,10 @@ public class WriteBoardHandler implements CommandHandler {
 		request.setCharacterEncoding("UTF-8");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		String free_category = request.getParameter("free_category");
-		System.out.println("free_category="+free_category);
+		String categorySearch = request.getParameter("categorySearch");
+		System.out.println("free_category="+categorySearch);
 		
-		int cnt = writeBoardService.writetBoard(title, content, free_category);
+		int cnt = writeBoardService.writetBoard(title, content, categorySearch);
 		
 		//insert 되었다는 변수
 		request.setAttribute("cnt",cnt);

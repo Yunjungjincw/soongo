@@ -103,9 +103,55 @@ public class FreeBoardDAO {
 		return freeBoardList;
 	}
 	
+		// 카테고리로 글 검색 DAO
+		public List<FreeBoardList> searchBoard(String categorySearch) {
+			
+			System.out.println();
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			
+			String sql="SELECT free_no,free_title,free_content,free_credate,free_update,free_readcnt,user_name,isshow,free_category,user_no"+ 
+					" FROM FREEBOARD"+ 
+					" WHERE free_category=?";
+			
+			List<FreeBoardList> freeBoardList = new ArrayList<FreeBoardList>();
+			Connection conn = null;
+			try {
+				conn=ConnectionProvider.getConnection();
+				stmt = conn.prepareStatement(sql);
+				stmt.setString(1, categorySearch);
+				rs = stmt.executeQuery();
+				
+				System.out.println("dao1");
+				while(rs.next()) {
+					FreeBoardList list = new FreeBoardList(
+												rs.getInt(1),
+												rs.getString(2),
+												rs.getString(3),
+												rs.getTimestamp(4),
+												rs.getTimestamp(5),
+												rs.getInt(6),
+												rs.getString(7),
+												rs.getString(8),
+												rs.getString(9),
+												rs.getInt(10));
+					System.out.println("dao========"+list);
+								freeBoardList.add(list);
+								
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				JdbcUtil.close(stmt);
+				JdbcUtil.close(rs);
+			}
+			System.out.println("doa3"+freeBoardList);
+			return freeBoardList;
+		}
+	
 	
 	// 게시글 작성
-	public int insertBoard(String title, String content, String free_category) {
+	public int insertBoard(String title, String content, String categorySearch) {
 		PreparedStatement stmt = null;
 		
 		String sql="INSERT INTO FREEBOARD (free_title,free_content,free_credate,free_update,free_readcnt,user_name,isshow,free_category,user_no)" + 
@@ -121,7 +167,7 @@ public class FreeBoardDAO {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, title);
 			stmt.setString(2, content);
-			stmt.setString(3, free_category);
+			stmt.setString(3, categorySearch);
 			cnt = stmt.executeUpdate();
 			
 			conn.commit();

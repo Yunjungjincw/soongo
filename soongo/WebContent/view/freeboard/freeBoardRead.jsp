@@ -18,6 +18,7 @@
 			<p>글번호 : ${board.free_no}</p>
 			<p>제목: ${board.free_title}</p>
 			<p>내용: ${board.free_content}</p>
+			<p>카테고리: ${board.free_category}</p>
 			<p>작성일 : ${board.free_createdate}</p>
 			<p>수정일 : ${board.free_updatedate}</p>
 
@@ -41,8 +42,8 @@
 		<td>${comment.user_name}</td>
 		<td>${comment.comm_content}</td>
 		<td>${comment.comm_credate}</td>
-		<td><a href="<%=request.getContextPath()%>/freeboard/commentdelete.do?free_no=${freeBoard.list[0].free_no}&comm_no=${comment.comm_no}">삭제</a></td>
-		<td><a href="<%=request.getContextPath()%>/freeboard/commentupdate.do?free_no=${freeBoard.list[0].free_no}&comm_no=${comment.comm_no}">수정</a></td>
+		<td><a href="<%=request.getContextPath()%>/freeboard/commentdelete.do?free_no=${freeBoard.list[0].free_no}&comm_no=${comment.comm_no}"><button>삭제</button></a></td>
+		<td><a href="<%=request.getContextPath()%>/freeboard/commentupdate.do?free_no=${freeBoard.list[0].free_no}&comm_no=${comment.comm_no}"><button>수정</button></a></td>
 	</tr>
 </c:forEach>
 </table>

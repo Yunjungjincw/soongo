@@ -19,8 +19,7 @@ public class ReadBoardService {
 		
 			System.out.println("db연결 확인");
 		freeBoardDAO.updateCnt(no);
-		List<FreeBoardList> list 
-			= freeBoardDAO.readDetail(no);
+		List<FreeBoardList> list = freeBoardDAO.readDetail(no);
 		System.out.println("서비스 read"+list);
 		
 		
