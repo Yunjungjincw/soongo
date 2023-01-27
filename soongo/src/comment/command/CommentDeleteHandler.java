@@ -1,7 +1,5 @@
 package comment.command;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +25,7 @@ public class CommentDeleteHandler implements CommandHandler {
 		
 		int cnt = deleteCommentService.deleteComment(comm_no);
 		
-		//insert 되었다는 변수
+		//insert 되었다는 변수수
 		request.setAttribute("cnt",cnt);
 		
 		response.sendRedirect("read.do?no=" + free_no);
