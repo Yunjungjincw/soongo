@@ -14,11 +14,11 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
 
 <body>
 <a href="<%=request.getContextPath()%>/index.jsp">HOME</a>
-<a href="<%=request.getContextPath()%>/freeboard/list.do">글 목록으로</a>
+<a href="<%=request.getContextPath()%>/freeboard/list.do">자유게시판으로 이동하기</a>
 
 <hr>
 <hr>
-	게시글 삭제완료 :<c:out value="${deleteresult}"></c:out>
+	게시글 삭제완료 :${deleteresult}
 <hr>
 <hr>
 </body>

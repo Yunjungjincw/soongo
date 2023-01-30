@@ -9,8 +9,10 @@
 
 <title>게시판 목록</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 </head>
 <body>
+
 <h2><a href="<%=request.getContextPath()%>/index.jsp">HOME</a></h2>
 <hr>
 <a href="<%=request.getContextPath()%>/freeboard/list.do"><button>전체 글 목록</button></a>
@@ -31,7 +33,6 @@
 	<tr>
 		<th>글 번호</th>
 		<th>제목</th>
-	<!-- 	<th>내용</th> -->
 		<th>작성일</th>
 		<th>수정일</th>
 		<th>조회수</th>

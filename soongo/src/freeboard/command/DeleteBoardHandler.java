@@ -53,16 +53,14 @@ public class DeleteBoardHandler implements CommandHandler {
 		String no = request.getParameter("no");
 		System.out.println("no2222="+no);
 		
-		
-	
 		int deleteresult = deleteBoardService.delete(no);
-		
-		
 		//insert 되었다는 변수
-		request.setAttribute("deleteresult",deleteresult);
 		
-		
-		
-		return "/view/freeboard/freeBoardDeleteSuccess.jsp";
+		if(deleteresult!=1) {
+			return "/view/freeboard/freeBoardList.jsp";
+		}else {
+			request.setAttribute("deleteresult",deleteresult);
+			return "/view/freeboard/freeBoardDeleteSuccess.jsp";
+		}
 	}
 }
